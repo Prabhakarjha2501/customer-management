@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Container, Typography } from '@mui/material';
 import { createCustomer, updateCustomer, getCustomerById } from '../../services/api';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const CustomerForm = () => {
   const { id } = useParams();
+  const navigate=useNavigate();
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -45,6 +46,10 @@ const CustomerForm = () => {
     fetchCustomer();
   }, [id]);
 
+   const getAllCustomer =()=>{
+        navigate('/customer/list')
+   }
+
   return (
     <Container>
       <Typography variant="h4">{id ? 'Update' : 'Create'} Customer</Typography>
@@ -58,6 +63,7 @@ const CustomerForm = () => {
         <TextField name="email" label="Email" value={form.email} onChange={handleChange} fullWidth margin="normal" />
         <TextField name="phone" label="Phone" value={form.phone} onChange={handleChange} fullWidth margin="normal" />
         <Button type="submit" variant="contained" color="primary">{id ? 'Update' : 'Create'}</Button>
+        <Button variant="contained" color="primary" onClick={getAllCustomer}>CustomerList</Button>
       </form>
     </Container>
   );

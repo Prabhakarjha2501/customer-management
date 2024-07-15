@@ -13,7 +13,7 @@ const App = () => (
       <Route path="/customer/create" element={<CustomerForm />} />
       <Route path="/customer/update/:id" element={<CustomerForm />} />
       <Route path="/customer/list" element={<CustomerList />} />
-      <Route path="/" element={<Navigate to="/signup" />} />
+      <Route path="/" element={<Navigate to="/signin" />} />
       
     </Routes>
 

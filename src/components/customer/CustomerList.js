@@ -11,7 +11,7 @@ const CustomerList = () => {
   useEffect(() => {
     const fetchCustomers = async () => {
       const { data } = await getAllCustomers(page, pageSize);
-      setCustomers(data);
+      setCustomers(data.content);
     };
     fetchCustomers();
   }, [page, pageSize]);
